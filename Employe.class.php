@@ -18,6 +18,12 @@
         private $_experience;
 
 
+        // Les attributs constante :
+        const AGE_PETIT = array(0,1,2,3,4,5,6,7,8,9,10);
+        const AGE_MOYEN = array(11,12,13,14,15);
+        const AGE_GRAND = array(16,17,18); 
+
+
         // D'abord on écrit les méthodes accesseurs (getters) qui nous renvoient la valeur de chaque attribut privé :
 
         public function getNom()
@@ -48,6 +54,11 @@
         public function getService()
         { 
             return $this->_service;  
+        }
+
+        public function getExperience()
+        { 
+            return $this->_experience;  
         }
 
 
@@ -82,10 +93,6 @@
         { 
             return $this->_service = $serviceEmploye;  
         }
-   
-
-
-        // Puis on écrit une méthode mutateur(setter) qui nous retourne le nombre d'année d'ancienneté d'un employé :
         
         public function setExperience($anneeEmbauche)
         {   
@@ -142,12 +149,42 @@
 
         public function chequeNoel($ageEnfant, $nombreEnfant)
         {
-            if($ageEnfant>=0 || $ageEnfant<=10)
+            if (!is_int($ageEnfant) || !is_int($nombreEnfant))     // S'il ne s'agit pas d'un nombre entier.
             {
-                echo 'Vous avez le droit d’avoir des chèques de Noël.';
-                
-                $nombreCheque = $ageEnfant*$nombreEnfant;
+                echo 'L\'age et le nombre d\'enfant doivent être un nombre entier';
+                echo '<br>';
+                return;
             }
+            
+            // Maintenant on vérifie qu'on nous donne bien soit une « AGE_PETIT », soit une « AGE_MOYEN », soit une « AGE_GRAND »
+
+            if(in_array($ageEnfant, self::AGE_PETIT))     
+            {  
+                    $nombreCheque = $nombreEnfant;
+                    
+                    echo 'Vous avez le droit d’avoir ' . $nombreCheque . ' chèques de Noël chacun de 20 euros';
+                    echo '<br>';
+                    return;
+            }
+
+            if(in_array($ageEnfant, self::AGE_MOYEN))     
+            {  
+                    $nombreCheque = $nombreEnfant;
+                    
+                    echo 'Vous avez le droit d’avoir ' . $nombreCheque . ' chèques de Noël chacun de 30 euros';
+                    echo '<br>';
+                    return;
+            }
+            
+            if(in_array($ageEnfant, self::AGE_GRAND))  
+            {
+                    $nombreCheque = $nombreEnfant;
+                    
+                    echo 'Vous avez le droit d’avoir ' . $nombreCheque . ' chèques de Noël chacun de 50 euros';
+                    echo '<br>';
+                    return;
+            }
+            
             else
             {
                 echo 'Vous n\'avez pas le droit d’avoir des chèques de Noël.';
