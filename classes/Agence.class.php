@@ -7,10 +7,9 @@
         private $_adresseAgence;
         private $_codePostalAgence;
         private $_villeAgence;
-        private $_resto;
 
 
-        // D'abord on écrit les méthodes accesseurs (getters) qui nous renvoient la valeur de chaque attribut privé :
+        // D'abord on écrit les méthodes accesseurs (getters) qui nous renvoient la valeur de chaque attribut :
 
         public function getNomAgence()
         { 
@@ -33,7 +32,7 @@
         }
 
 
-        // Ensuite il faut écrire les méthodes mutateurs (setters) pour attribuer une valeur à chaque attribut privé :
+        // Ensuite il faut écrire les méthodes mutateurs (setters) pour attribuer une valeur à chaque attribut :
 
         public function setNomAgence($nomAgence)
         { 
@@ -57,15 +56,13 @@
 
 
 
-        // On écrit une méthode mutateur (setter) qui nous retourne le mode de restauration de chaque agence :
+        // On écrit une méthode (fonction) qui nous retourne le mode de restauration de chaque agence :
 
-        public function setModeResto($modeResto, $nomAgence)
-        { 
-            $this->_resto = $modeResto; 
-
+        public function ModeResto($nomAgence, $modeResto)
+        {  
             $agence = $this->setNomAgence($nomAgence);       
 
-            echo 'Le mode de restauration de l\'agence ' . $agence . ' est ' . $this->_resto = $modeResto . '.' ;
+            echo 'Le mode de restauration de l\'agence ' . $agence . ' est ' . $modeResto . '.' ;
             echo '<br>';
         }
 

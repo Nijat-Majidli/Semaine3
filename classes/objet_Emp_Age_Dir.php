@@ -1,12 +1,12 @@
 <?php
 
-    // D'abord on appele les fichiers qui contient la classe Employe et Agence :
+    // D'abord on appele les fichiers qui contient les classes Employe, Agence et Directeur :
     require_once ('Employe.class.php');
     require_once ('Agence.class.php');
     require_once ('Directeur.class.php');
 
 
-    // Ensuite on crée des objets à partir de la classe Employe:
+    // Ensuite on crée des objets à partir de la classe Employe et Directeur:
 
     $employe1 = new Employe();
     $employe1->setPrime(100, 2020);
